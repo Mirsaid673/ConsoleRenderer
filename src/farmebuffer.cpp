@@ -26,10 +26,10 @@ void Framebuffer::clear()
 {
     for (auto &line : buffer)
         for (auto &ch : line)
-            ch = ' ';
+            ch = clear_char;
 }
 
-void Framebuffer::draw()
+void Framebuffer::display()
 {
     for (auto &line : buffer)
         std::cout << line << '\n'; // '\n' is faster than std::endl
