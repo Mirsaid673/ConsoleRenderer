@@ -1,7 +1,7 @@
 #include "framebuffer.h"
 #include "renderer.h"
 #include "global.h"
-#include "vertex_shader.h"
+#include "shader.h"
 
 #include <chrono>
 #include <sys/ioctl.h>
@@ -11,13 +11,12 @@
 
 class MyShader : public VertexShader
 {
-private:
+public:
     struct InData
     {
         glm::vec3 aPos;
     } & in;
 
-public:
     glm::mat4 PM;
 
     glm::vec4 main() override
@@ -68,7 +67,7 @@ int main(int, char **)
     da.buffer_id = buf;
     da.data_type = DataType::FLOAT32;
     da.data_demension = DataDemension::VEC3;
-    da.in_data_offset = 0;
+    da.in_data_offset = offsetof(MyShader::InData, aPos);
     da.offset = 0;
     da.stride = sizeof(verts[0]);
     Global::bindBufferArray(bao);

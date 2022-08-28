@@ -62,10 +62,9 @@ void Global::drawArrays(uint start, uint count)
 void Global::drawElements(uint start, uint count)
 {
     uint EB_id = current_buffer_array->element_buffer_id;
-    uint* buff = (uint*)buffers[EB_id].data;
-    
-    //std::vector<glm::vec4> Positions;
+    uint *buff = (uint *)buffers[EB_id].data;
 
+    // std::vector<glm::vec4> Positions;
 
     glm::vec4 points[3];
     for (int i = start; i < count; i++)
@@ -79,7 +78,9 @@ void Global::drawElements(uint start, uint count)
         points[i % 3] = vert_shader->main();
         if (i % 3 == 2)
         {
-            Renderer::drawFilledTriangle(points[0], points[1], points[2]);
+            Renderer::drawFilledTriangle(Renderer::getCoord(points[0]),
+                                         Renderer::getCoord(points[1]),
+                                         Renderer::getCoord(points[2]));
         }
     }
 }

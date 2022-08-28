@@ -2,7 +2,7 @@
 
 #include "buffer.h"
 #include "renderer.h"
-#include "vertex_shader.h"
+#include "shader.h"
 #include "renderer.h"
 
 #include <vector>

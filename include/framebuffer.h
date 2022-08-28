@@ -9,13 +9,11 @@ class Framebuffer
 {
 private:
     char_t clear_char = ' ';
-    char_t dra_char = '#';
     int width;
     int height;
     std::vector<string_t> buffer;
 
 public:
-    char_t draw_char = '#';
 
     Framebuffer() {}
     Framebuffer(int w, int h) { resize(w, h); }
@@ -26,7 +24,7 @@ public:
     void clear();
 
     void display();
-    void setPoint(int x, int y) { buffer[y][x] = draw_char; }
+    void setPoint(int x, int y, char_t ch = '#') { buffer[y][x] = ch; }
 
     int getWidth() { return width; }
     int getHeight() { return height; }
